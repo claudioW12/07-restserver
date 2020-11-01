@@ -27,9 +27,7 @@ app.get('/usuarios', function(req, res) {
                 res.json({
                     ok: true,
                     usuarios,
-                    cuantos: conteo,
-                    DB: process.env.URLDB,
-                    port: process.env.PORT
+                    cuantos: conteo
                 });
             });
         });
