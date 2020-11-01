@@ -30,7 +30,8 @@ app.get('/usuarios', function(req, res) {
                     ok: true,
                     usuarios,
                     cuantos: conteo,
-                    DB: process.env.URLDB
+                    DB: process.env.URLDB,
+                    port: process.env.PORT
                 });
             });
         });
