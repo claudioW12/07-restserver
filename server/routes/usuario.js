@@ -30,7 +30,7 @@ app.get('/usuario', verificaToken, (req, res) => {
                 });
             }
 
-            Usuario.countDocuments({ estado: true }, (err, conteo) => {
+            Usuario.count({ estado: true }, (err, conteo) => {
 
                 res.json({
                     ok: true,
