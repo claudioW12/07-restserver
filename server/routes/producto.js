@@ -43,6 +43,33 @@ app.get('/productos', (req, res) => {
         });
 });
 
+app.get('/producto/buscar/:termino', [verificaToken, verificaAdmin_Role], (req, res) => {
+
+    let termino = req.params.termino;
+
+    let regex = new RegExp(termino, 'i');
+
+    Producto.find({ nombre: regex })
+        .populate('categoria', 'descripcion')
+        .exec((err, productos) => {
+
+            if (err) {
+                return res.status(500).json({
+                    ok: false,
+                    err
+                });
+            }
+
+            Producto.countDocuments({ nombre: regex }, (err, conteo) => {
+                res.json({
+                    ok: true,
+                    productos,
+                    cuantos: conteo
+                });
+            });
+        })
+});
+
 
 
 app.get('/producto/:id', (req, res) => {
