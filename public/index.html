@@ -186,6 +186,7 @@
         <li id="name" href="#"></li>
         <li id="email" href="#"></li>
         <li><img id="img" src="" alt="Default"></li>
+        <li id="token"></li>
     </ul>
 
 
@@ -223,6 +224,8 @@
 
 
 
+
+
             var id_token = googleUser.getAuthResponse().id_token;
 
             console.log(id_token);
@@ -236,7 +239,7 @@
             };
             xhr.send('idtoken=' + id_token);
 
-
+            $('#token').text(id_token);
 
 
 
